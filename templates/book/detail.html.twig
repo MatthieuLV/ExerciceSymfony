@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un livre{% endblock %}
+
+{% block body %}
+<div>
+    <h1>{{ book.title }}</h1>
+    <p>{{ book.description }}</p>
+    {% if book.comments|length > 0 %}
+        <ul>
+            {% for comment in book.comments %}
+                <li>{{ comment.content }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Il n'y a pas de commentaire</p>
+    {% endif %}
+    <hr>
+    {{ form(comment_form) }}
+</div>
+{% endblock %}
